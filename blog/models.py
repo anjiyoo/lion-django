@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager # 추가
 
 class Post(models.Model):
     # CharField(max_length) 지정해야 에러 안남
@@ -12,6 +13,8 @@ class Post(models.Model):
     create_dt = models.DateTimeField("CREATE DATE", auto_now_add=True)
     # 수정일
     modify_dt = models.DateTimeField("MODIFY DATE", auto_now=True)
+    # 태그
+    tags = TaggableManager(blank=True) # 추가
 
     class Meta:
         verbose_name = 'post'
@@ -30,3 +33,10 @@ class Post(models.Model):
     # get_previous메소드 : 장고 내장 함수 호출.modify_dt를 기준으로 다음 포스트 반환
     def get_next(self):
         return self.get_next_by_modify_dt()
+    
+# # Comment
+# class Comment(models.Model):
+#     # user <- 사용자테이블 있을 때
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     Comment = models.CharField(max_length=200)
+

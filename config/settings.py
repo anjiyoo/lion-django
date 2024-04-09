@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmark.apps.BookmarkConfig', # 앱 등록
     'blog', # 앱 등록
+    'taggit.apps.TaggitAppConfig', # 테깃 등록
+    'taggit_templatetags2', # 테깃 등록
+    'photo', # 앱 등록
 ]
  
 MIDDLEWARE = [
@@ -138,3 +141,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # BASE_DIR/'media'
+
+TAGGIT_CASE_INSENSITIVE=True
+TAGGIT_LIMIT=50
+
+# DISQUS설정
+DISQUS_SHORTNAME = 'lion-django-tutorial-start'
+DISQUS_MY_DOMAIN = 'http://127.0.0.1:8000'

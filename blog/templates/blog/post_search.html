@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Post_Search.html{% endblock %}
+
+{% block content %}
+<br>
+<h1>Blog Search</h1>
+<br>
+<!--post 방식으로 view에 전달-->
+<form action="." method="post">
+    {% csrf_token %}
+    {{form.as_table}}
+    <input type = "submit" value="검색" class="">
+</form>
+
+<br>
+
+{% if object_list %}
+    {% for post in object_list %}
+        <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+        {{post.modify_date|date:"Y N d"}}
+        <p>{{post.content}}</p>
+    {% endfor %}    
+{% elif search_term %}
+    <b>Search Word <i>{{search_term}}</i>으로 검색했는데 안나왔어요</b>
+{% endif %}
+{% endblock %}
