@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from taggit.managers import TaggableManager # 추가
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     # CharField(max_length) 지정해야 에러 안남
@@ -14,7 +14,7 @@ class Post(models.Model):
     # 수정일
     modify_dt = models.DateTimeField("MODIFY DATE", auto_now=True)
     # 태그
-    tags = TaggableManager(blank=True) # 추가
+    tags = TaggableManager(blank=True)
 
     class Meta:
         verbose_name = 'post'

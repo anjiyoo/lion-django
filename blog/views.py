@@ -16,10 +16,10 @@ class PostLV(ListView):
     # 보여줄 객체
     context_object_name = 'posts'
     # 내용 한개를 한 페이지로 구성
-    paginate_by = 1
-    # 데이터 가져오기 (필터링 가능 ex)최근 5개 데이터 가져오기)
-    def get_queryset(self):
-        return Post.objects.all()
+    paginate_by = 3
+    # # 데이터 가져오기 (필터링 가능 ex)최근 5개 데이터 가져오기)
+    # def get_queryset(self):
+    #     return Post.objects.all()
     
 # # PostLV 와 같은 기능   
 # def dumppy_post(request):

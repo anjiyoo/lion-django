@@ -5,6 +5,9 @@ from . import views
 app_name = "photo"
 
 urlpatterns = [
-    # path("", views.BookmarkLV.as_view(), name="index"),
-    # path("<int:pk>/", views.BookmarkDV.as_view(), name="detail"),    
+    path("", views.AlbumLV.as_view(), name="index"),
+    path("album", views.AlbumLV.as_view(), name="album_list"),
+    # 제네릭뷰는 pk로 값 찾는게 기본값
+    path("album/<int:pk>", views.AlbumDV.as_view(), name="album_detail"),
+    path("photo/<int:pk>", views.PhotoDV.as_view(), name="photo_detail"),
 ]
