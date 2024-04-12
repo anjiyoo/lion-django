@@ -7,9 +7,10 @@ from django.views.generic import ListView, DetailView, ArchiveIndexView, YearArc
 from django.conf import settings
 from blog.forms import PostSearchForm
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # ListView : 전체적인 데이터 보여줌
-class PostLV(ListView):
+class PostLV(LoginRequiredMixin, ListView):
     model = Post
     # 템플릿 연결
     template_name = "blog/post_all.html"  # default : blog/post_list.html
@@ -17,6 +18,8 @@ class PostLV(ListView):
     context_object_name = 'posts'
     # 내용 한개를 한 페이지로 구성
     paginate_by = 3
+    # 로그인 화면으로 연결(필수x)
+    login_url = '/accounts/login/'
     # # 데이터 가져오기 (필터링 가능 ex)최근 5개 데이터 가져오기)
     # def get_queryset(self):
     #     return Post.objects.all()
